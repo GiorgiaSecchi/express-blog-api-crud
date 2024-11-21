@@ -6,9 +6,25 @@ const postsData = require("../data/posts_data.js");
 //# INDEX
 
 function index(req, res) {
-  res.json(postsData);
+  const tag = req.query.tag;
+  // res.json(tag);
+  // console.log("TAG: " + tag);
+
+  if (tag) {
+    const post = postsData.filter((post) => {
+      return post.tags.includes(tag.toLowerCase());
+    });
+    res.json(post);
+    console.log(post);
+  } else {
+    res.json({
+      count: postsData.length,
+      posts: postsData,
+    });
+  }
 
   // res.json("Visualizza la lista di tutti i posts");
+  // res.json(postsData);
 }
 
 //# SHOW

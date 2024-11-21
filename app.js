@@ -12,21 +12,21 @@ app.get("/", (req, res) => {
   // res.type("json").send(text) --> res.json(text)
 });
 
-app.get("/bacheca", (req, res) => {
-  const tag = req.params.tag;
-  if (tag) {
-    const filteredPosts = posts.filter((post) => {
-      return post.tags.includes(tag.toLowerCase());
-    });
-    res.json(filteredPosts);
-    console.log(filteredPosts);
-  } else {
-    res.json({
-      count: posts.length,
-      posts: posts,
-    });
-  }
-});
+// app.get("/bacheca", (req, res) => {
+//   const tag = req.query.tag;
+//   if (tag) {
+//     const filteredPosts = posts.filter((post) => {
+//       return post.tags.includes(tag.toLowerCase());
+//     });
+//     res.json(filteredPosts);
+//     console.log(filteredPosts);
+//   } else {
+//     res.json({
+//       count: posts.length,
+//       posts: posts,
+//     });
+//   }
+// });
 
 app.listen(port, () => {
   console.log(`Example app listening on port ${port}`);
