@@ -1,6 +1,8 @@
 const express = require("express");
 const router = express.Router();
 
+const postsController = require("../controllers/posts_controllers.js");
+
 //# COLLEGAMENTO FILE CON LISTA POSTS
 
 const posts = require("../db/posts-db.js");
@@ -10,10 +12,7 @@ const posts = require("../db/posts-db.js");
 
 //* INDEX
 
-router.get("/", (req, res) => {
-  //   res.send("Visualizza la lista di tutti i posts");
-  res.json(posts);
-});
+router.get("/", postsController.index);
 
 //* SHOW
 
