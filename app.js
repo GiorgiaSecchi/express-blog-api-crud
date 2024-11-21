@@ -12,6 +12,10 @@ app.get("/", (req, res) => {
   // res.type("json").send(text) --> res.json(text)
 });
 
+app.listen(port, () => {
+  console.log(`Example app listening on port ${port}`);
+});
+
 // app.get("/bacheca", (req, res) => {
 //   const tag = req.query.tag;
 //   if (tag) {
@@ -27,7 +31,3 @@ app.get("/", (req, res) => {
 //     });
 //   }
 // });
-
-app.listen(port, () => {
-  console.log(`Example app listening on port ${port}`);
-});

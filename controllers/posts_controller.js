@@ -35,7 +35,7 @@ function show(req, res) {
   const post = postsData.find((post) => post.id === id);
   console.log(post);
 
-  //* controllo se errore
+  //* controllo se errore perchè il post non esiste
   if (!post) {
     return res.status(404).json({
       error: "Not Found",
@@ -72,10 +72,11 @@ function modify(req, res) {
 //# DESTROY
 
 function destroy(req, res) {
+  //* logica per recupero id
   const id = parseInt(req.params.id);
-
   const post = postsData.find((post) => post.id === id);
 
+  //* controllo se errore perchè il post non esiste
   if (!post) {
     return res.status(404).json({
       error: "Not Found",
@@ -83,10 +84,11 @@ function destroy(req, res) {
     });
   }
 
+  //* rimuovo il post
   const postIndex = postsData.indexOf(post);
-
   postsData.splice(postIndex, 1);
 
+  //* risposta con uno status (senza body) = "la cancellazione è andata a buon fine"
   res.sendStatus(204);
   console.log("Lista aggiornata dei post: ", postsData);
 
