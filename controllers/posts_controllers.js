@@ -14,4 +14,10 @@ function show(req, res) {
   //   res.json(post);
 }
 
-module.exports = { index, show };
+//# STORE
+
+function store(req, res) {
+  res.json("Crea un nuovo post");
+}
+
+module.exports = { index, show, store };

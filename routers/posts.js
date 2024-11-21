@@ -1,7 +1,7 @@
 const express = require("express");
 const router = express.Router();
 
-const postsController = require("../controllers/posts_controllers.js");
+const postsControllers = require("../controllers/posts_controllers.js");
 
 //# COLLEGAMENTO FILE CON LISTA POSTS
 
@@ -12,17 +12,15 @@ const posts = require("../db/posts-db.js");
 
 //* INDEX
 
-router.get("/", postsController.index);
+router.get("/", postsControllers.index);
 
 //* SHOW
 
-router.get("/:id", postsController.show);
+router.get("/:id", postsControllers.show);
 
 //* STORE
 
-router.post("/", (req, res) => {
-  res.send("Crea un nuovo post");
-});
+router.post("/", postsControllers.store);
 
 //* UPDATE
 
