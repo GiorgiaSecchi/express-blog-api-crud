@@ -9,6 +9,7 @@ const posts = [
   },
 
   {
+    id: 2,
     titolo: "Cracker di barbabietola",
     contenuto: "La ricetta",
     immagine: "/img/cracker_barbabietola.jpeg",
@@ -16,6 +17,7 @@ const posts = [
   },
 
   {
+    id: 3,
     titolo: "Pane fritto dolce",
     contenuto: "La ricetta",
     immagine: "/img/pane_fritto_dolce.jpeg",
@@ -23,6 +25,7 @@ const posts = [
   },
 
   {
+    id: 4,
     titolo: "Pasta alla barbabietola",
     contenuto: "La ricetta",
     immagine: "/img/pasta_barbabietola.jpeg",
@@ -30,6 +33,7 @@ const posts = [
   },
 
   {
+    id: 5,
     titolo: "Torta paesana",
     contenuto: "La ricetta",
     immagine: "/img/torta_paesana.jpeg",
