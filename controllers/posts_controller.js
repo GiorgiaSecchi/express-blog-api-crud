@@ -33,7 +33,6 @@ function show(req, res) {
   //* logica per recupero id
   const id = parseInt(req.params.id);
   const post = postsData.find((post) => post.id === id);
-  console.log(post);
 
   //* controllo se errore perchè il post non esiste
   if (!post) {
@@ -45,6 +44,7 @@ function show(req, res) {
 
   //* risposta mostra post
   res.json(post);
+  console.log("Il post mostrato è: ", post);
 
   // res.json("Visualizza un post: " + id);
 }
