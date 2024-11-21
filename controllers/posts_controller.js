@@ -6,9 +6,8 @@ const posts = require("../data/posts_data.js");
 //# INDEX
 
 function index(req, res) {
-  res.json("Visualizza la lista di tutti i posts");
-
-  // res.json(posts);
+  res.json(posts);
+  // res.json("Visualizza la lista di tutti i posts");
 }
 
 //# SHOW
