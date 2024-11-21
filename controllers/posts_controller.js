@@ -20,4 +20,11 @@ function store(req, res) {
   res.json("Crea un nuovo post");
 }
 
-module.exports = { index, show, store };
+//# UPDATE
+
+function update(req, res) {
+  const id = parseInt(req.params.id);
+  res.json("Sostituisco interamente il post " + id);
+}
+
+module.exports = { index, show, store, update };
