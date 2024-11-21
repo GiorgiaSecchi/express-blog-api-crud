@@ -1,3 +1,8 @@
+//# COLLEGAMENTO FILE CON LISTA POSTS
+
+const posts = require("../data/posts_data.js");
+// console.log(posts);
+
 //# INDEX
 
 function index(req, res) {

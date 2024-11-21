@@ -3,11 +3,6 @@ const router = express.Router();
 
 const postsController = require("../controllers/posts_controller.js");
 
-//# COLLEGAMENTO FILE CON LISTA POSTS
-
-const posts = require("../db/posts-db.js");
-// console.log(posts);
-
 //# ROTTE POSTS
 
 //* INDEX
