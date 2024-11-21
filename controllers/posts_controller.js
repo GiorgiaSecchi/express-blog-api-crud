@@ -1,12 +1,12 @@
 //# COLLEGAMENTO FILE CON LISTA POSTS
 
-const posts = require("../data/posts_data.js");
+const postsData = require("../data/posts_data.js");
 // console.log(posts);
 
 //# INDEX
 
 function index(req, res) {
-  res.json(posts);
+  res.json(postsData);
   // res.json("Visualizza la lista di tutti i posts");
 }
 
@@ -14,10 +14,20 @@ function index(req, res) {
 
 function show(req, res) {
   const id = parseInt(req.params.id);
-  res.json("Visualizza un post: " + id);
 
-  //   const post = posts.find((post) => post.id === id);
-  //   res.json(post);
+  const post = postsData.find((post) => post.id === id);
+  console.log(post);
+
+  if (!post) {
+    return res.status(404).json({
+      error: "Not Found",
+      message: "Post non trovato",
+    });
+  }
+
+  res.json(post);
+
+  // res.json("Visualizza un post: " + id);
 }
 
 //# STORE
