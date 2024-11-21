@@ -28,9 +28,7 @@ router.put("/:id", postsController.update);
 
 //* MODIFY
 
-router.patch("/:id", (req, res) => {
-  res.send("Modifica parzialmente un post");
-});
+router.patch("/:id", postsController.modify);
 
 //* DESTROY
 

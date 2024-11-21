@@ -2,6 +2,8 @@
 
 function index(req, res) {
   res.json("Visualizza la lista di tutti i posts");
+
+  // res.json(posts);
 }
 
 //# SHOW
@@ -24,7 +26,14 @@ function store(req, res) {
 
 function update(req, res) {
   const id = parseInt(req.params.id);
-  res.json("Sostituisco interamente il post " + id);
+  res.json("Sostituire interamente il post " + id);
 }
 
-module.exports = { index, show, store, update };
+//# MODIFY
+
+function modify(req, res) {
+  const id = parseInt(req.params.id);
+  res.json("Modifica il post " + id);
+}
+
+module.exports = { index, show, store, update, modify };
