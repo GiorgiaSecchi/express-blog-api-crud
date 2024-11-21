@@ -32,8 +32,6 @@ router.patch("/:id", postsController.modify);
 
 //* DESTROY
 
-router.delete("/:id", (req, res) => {
-  res.send("Elimina un post");
-});
+router.delete("/:id", postsController.destroy);
 
 module.exports = router;

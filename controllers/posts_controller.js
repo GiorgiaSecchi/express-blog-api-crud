@@ -36,4 +36,11 @@ function modify(req, res) {
   res.json("Modifica il post " + id);
 }
 
-module.exports = { index, show, store, update, modify };
+//* DESTROY
+
+function destroy(req, res) {
+  const id = parseInt(req.params.id);
+  res.json("Elimina il post " + id);
+}
+
+module.exports = { index, show, store, update, modify, destroy };
