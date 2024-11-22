@@ -34,7 +34,7 @@ function show(req, res) {
   const id = parseInt(req.params.id);
   const post = postsData.find((post) => post.id === id);
 
-  //* controllo se errore perchè il post non esiste
+  //* avviso errore se il post non esiste
   if (!post) {
     return res.status(404).json({
       error: "Not Found",
@@ -52,7 +52,10 @@ function show(req, res) {
 //# STORE
 
 function store(req, res) {
-  res.json("Crea un nuovo post");
+  const newPost = req.body;
+  console.log(newPost);
+
+  // res.json("Crea un nuovo post");
 }
 
 //# UPDATE
@@ -76,7 +79,7 @@ function destroy(req, res) {
   const id = parseInt(req.params.id);
   const post = postsData.find((post) => post.id === id);
 
-  //* controllo se errore perchè il post non esiste
+  //* avviso errore se il post non esiste
   if (!post) {
     return res.status(404).json({
       error: "Not Found",
