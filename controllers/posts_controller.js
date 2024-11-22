@@ -108,6 +108,19 @@ function update(req, res) {
     });
   }
 
+  //* controllo SE errore uno dei nuovi parametri inseriti
+  if (
+    !req.body.titolo ||
+    !req.body.contenuto ||
+    !req.body.immagine ||
+    !Array.isArray(req.body.tags) // = se "tags" non è un array
+  ) {
+    return res.status(400).json({
+      error: "Invalid params",
+      message: "I parametri inseriti sono incompleti o non sono validi",
+    });
+  }
+
   //* aggiorno il post
   post.titolo = req.body.titolo;
   post.contenuto = req.body.contenuto;
