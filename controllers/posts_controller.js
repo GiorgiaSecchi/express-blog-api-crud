@@ -55,13 +55,26 @@ function store(req, res) {
   // const newPostData = req.body;
   // console.log(newPostData);
 
-  // .at(-1) = inzia a contare partendo dall'ultimo elemento, come scrivere [postsData.lenght -1]
-  // .id = accedo all'id dell'ultima pizza
-  // +1 = nuovo id incrementato
+  //* controllo SE errore uno dei nuovi parametri inseriti
+  if (
+    !req.body.titolo ||
+    !req.body.contenuto ||
+    !req.body.immagine ||
+    !Array.isArray(req.body.tags) // = se "tags" non è un array
+  ) {
+    return res.status(404).json({
+      error: "Invalid params",
+      message: "I parametri inseriti sono incompleti o non sono validi",
+    });
+  }
+
+  //* .at(-1) = inzia a contare partendo dall'ultimo elemento, come scrivere [postsData.lenght -1]
+  //* .id = accedo all'id dell'ultima pizza
+  //* +1 = nuovo id incrementato
   const newId = postsData.at(-1).id + 1;
   console.log(newId);
 
-  // creo nuovo oggetto post
+  //* creo nuovo oggetto post
   const newPostData = {
     id: newId,
     titolo: req.body.titolo,
@@ -70,7 +83,7 @@ function store(req, res) {
     tags: req.body.tags,
   };
 
-  // aggiungo nuovo post all'array posts
+  //* aggiungo nuovo post all'array posts
   postsData.push(newPostData);
   console.log(postsData);
 
