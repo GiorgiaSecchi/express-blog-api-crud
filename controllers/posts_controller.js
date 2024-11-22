@@ -52,8 +52,10 @@ function show(req, res) {
 //# STORE
 
 function store(req, res) {
-  const newPost = req.body;
-  console.log(newPost);
+  const newPostData = req.body;
+  console.log(newPostData);
+
+  res.json(newPostData);
 
   // res.json("Crea un nuovo post");
 }
