@@ -127,7 +127,17 @@ function update(req, res) {
 
 function modify(req, res) {
   const id = parseInt(req.params.id);
-  res.json("Modifica il post " + id);
+  const post = postsData.find((post) => post.id === id);
+
+  //* avviso errore se il post non esiste
+  if (!post) {
+    return res.status(404).json({
+      error: "Not Found",
+      message: "Post non trovato",
+    });
+  }
+
+  res.json("Modifica il post: " + id);
 }
 
 //# DESTROY
