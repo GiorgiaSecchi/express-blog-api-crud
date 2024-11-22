@@ -62,7 +62,7 @@ function store(req, res) {
     !req.body.immagine ||
     !Array.isArray(req.body.tags) // = se "tags" non è un array
   ) {
-    return res.status(404).json({
+    return res.status(400).json({
       error: "Invalid params",
       message: "I parametri inseriti sono incompleti o non sono validi",
     });
@@ -96,8 +96,31 @@ function store(req, res) {
 //# UPDATE
 
 function update(req, res) {
+  //* trovo il post da modificare attraverso l'id
   const id = parseInt(req.params.id);
-  res.json("Sostituire interamente il post " + id);
+  const post = postsData.find((post) => post.id === id);
+
+  //* avviso errore se il post non esiste
+  if (!post) {
+    return res.status(404).json({
+      error: "Not Found",
+      message: "Post non trovato",
+    });
+  }
+
+  //* aggiorno il post
+  post.titolo = req.body.titolo;
+  post.contenuto = req.body.contenuto;
+  post.immagine = req.body.immagine;
+  post.tags = req.body.tags;
+
+  //* restituisco il post aggiornato
+  res.json(post);
+  console.log("ID del post sostituito è: " + id);
+
+  console.log(postsData);
+
+  // res.json("Sostituire interamente il post: " + id);
 }
 
 //# MODIFY
