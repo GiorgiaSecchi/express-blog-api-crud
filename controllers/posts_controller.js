@@ -52,9 +52,29 @@ function show(req, res) {
 //# STORE
 
 function store(req, res) {
-  const newPostData = req.body;
-  console.log(newPostData);
+  // const newPostData = req.body;
+  // console.log(newPostData);
 
+  // .at(-1) = inzia a contare partendo dall'ultimo elemento, come scrivere [postsData.lenght -1]
+  // .id = accedo all'id dell'ultima pizza
+  // +1 = nuovo id incrementato
+  const newId = postsData.at(-1).id + 1;
+  console.log(newId);
+
+  // creo nuovo oggetto post
+  const newPostData = {
+    id: newId,
+    titolo: req.body.titolo,
+    contenuto: req.body.contenuto,
+    immagine: req.body.immagine,
+    tags: req.body.tags,
+  };
+
+  // aggiungo nuovo post all'array posts
+  postsData.push(newPostData);
+  console.log(postsData);
+
+  res.status(201);
   res.json(newPostData);
 
   // res.json("Crea un nuovo post");

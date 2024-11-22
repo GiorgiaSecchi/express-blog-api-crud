@@ -5,7 +5,7 @@ const express = require("express");
 const app = express();
 const port = 3000;
 
-//* JSON PARSER FOR BODY REQUEST
+//* BODY-PARSER FOR BODY REQUEST (JSON)
 app.use(express.json());
 
 //* SERVING PUBLIC FOLDER
