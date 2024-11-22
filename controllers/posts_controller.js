@@ -72,7 +72,7 @@ function store(req, res) {
   //* .id = accedo all'id dell'ultima pizza
   //* +1 = nuovo id incrementato
   const newId = postsData.at(-1).id + 1;
-  console.log(newId);
+  console.log("Il nuovo post ha ID: " + newId);
 
   //* creo nuovo oggetto post
   const newPostData = {
@@ -128,6 +128,7 @@ function destroy(req, res) {
 
   //* risposta con uno status (senza body) = "la cancellazione è andata a buon fine"
   res.sendStatus(204);
+  console.log("Eliminato il post con ID: " + id);
   console.log("Lista aggiornata dei post: ", postsData);
 
   // res.json("Elimina il post " + id);
