@@ -11,6 +11,11 @@ app.use(express.json());
 //* SERVING PUBLIC FOLDER
 app.use(express.static("public"));
 
+//* LOG TIME MIDDLEWARE
+const checkTime = require("./middlewares/checkTime");
+// registrato per tutte le rotte dell'app (globale)
+app.use(checkTime);
+
 //* IMPORT ROUTERS
 const postsRouter = require("./routers/posts");
 
