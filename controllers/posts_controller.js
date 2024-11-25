@@ -36,7 +36,7 @@ function show(req, res) {
 
   //* avviso errore se il post non esiste
   if (!post) {
-    const err = new Error("Post non trovato");
+    const err = new Error("Post not found");
     err.status = 404;
     throw err;
 
@@ -66,10 +66,14 @@ function store(req, res) {
     !req.body.immagine ||
     !Array.isArray(req.body.tags) // = se "tags" non è un array
   ) {
-    return res.status(400).json({
-      error: "Invalid params",
-      message: "I parametri inseriti sono incompleti o non sono validi",
-    });
+    const err = new Error("Invalid params");
+    err.status = 400;
+    throw err;
+
+    // return res.status(400).json({
+    //   error: "Invalid params",
+    //   message: "I parametri inseriti sono incompleti o non sono validi",
+    // });
   }
 
   //* .at(-1) = inzia a contare partendo dall'ultimo elemento, come scrivere [postsData.lenght -1]
@@ -106,10 +110,14 @@ function update(req, res) {
 
   //* avviso errore se il post non esiste
   if (!post) {
-    return res.status(404).json({
-      error: "Not Found",
-      message: "Post non trovato",
-    });
+    const err = new Error("Post not found");
+    err.status = 404;
+    throw err;
+
+    // return res.status(404).json({
+    //   error: "Not Found",
+    //   message: "Post non trovato",
+    // });
   }
 
   //* controllo SE errore uno dei nuovi parametri inseriti
@@ -119,10 +127,14 @@ function update(req, res) {
     !req.body.immagine ||
     !Array.isArray(req.body.tags) // = se "tags" non è un array
   ) {
-    return res.status(400).json({
-      error: "Invalid params",
-      message: "I parametri inseriti sono incompleti o non sono validi",
-    });
+    const err = new Error("Invalid params");
+    err.status = 400;
+    throw err;
+
+    // return res.status(400).json({
+    //   error: "Invalid params",
+    //   message: "I parametri inseriti sono incompleti o non sono validi",
+    // });
   }
 
   //* aggiorno il post
@@ -148,10 +160,14 @@ function modify(req, res) {
 
   //* avviso errore se il post non esiste
   if (!post) {
-    return res.status(404).json({
-      error: "Not Found",
-      message: "Post non trovato",
-    });
+    const err = new Error("Post not found");
+    err.status = 404;
+    throw err;
+
+    // return res.status(404).json({
+    //   error: "Not Found",
+    //   message: "Post non trovato",
+    // });
   }
 
   res.json("Modifica il post: " + id);
@@ -166,10 +182,14 @@ function destroy(req, res) {
 
   //* avviso errore se il post non esiste
   if (!post) {
-    return res.status(404).json({
-      error: "Not Found",
-      message: "Post non trovato",
-    });
+    const err = new Error("Post not found");
+    err.status = 404;
+    throw err;
+
+    // return res.status(404).json({
+    //   error: "Not Found",
+    //   message: "Post non trovato",
+    // });
   }
 
   //* rimuovo il post
