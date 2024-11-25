@@ -36,10 +36,14 @@ function show(req, res) {
 
   //* avviso errore se il post non esiste
   if (!post) {
-    return res.status(404).json({
-      error: "Not Found",
-      message: "Post non trovato",
-    });
+    const err = new Error("Post non trovato");
+    err.status = 404;
+    throw err;
+
+    // return res.status(404).json({
+    //   error: "Not Found",
+    //   message: "Post non trovato",
+    // });
   }
 
   //* risposta mostra post
