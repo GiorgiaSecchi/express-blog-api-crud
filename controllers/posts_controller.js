@@ -176,8 +176,6 @@ function modify(req, res) {
 //# DESTROY
 
 function destroy(req, res) {
-  pluto.get();
-
   //* logica per recupero id
   const id = parseInt(req.params.id);
   const post = postsData.find((post) => post.id === id);
