@@ -10,25 +10,24 @@ const port = 3000;
 // LOG TIME MIDDLEWARE
 const checkTime = require("./middlewares/checkTime");
 const errorsHandler = require("./middlewares/errorsHandler");
+const notFound = require("./middlewares/notFound");
 
 // registrato per tutte le rotte dell'app (globale)
 app.use(checkTime);
-
 // BODY-PARSER FOR BODY REQUEST (JSON)
 app.use(express.json());
-
 // SERVING PUBLIC FOLDER (assets statici)
 app.use(express.static("public"));
 
 //* REGISTERING ROUTERS
 // import routers
 const postsRouter = require("./routers/posts");
-
 // setting routers
 app.use("/posts", postsRouter);
 
-//* ERROR HANDLERS (gli errori si gestiscono alla fine)
+//* ERROR HANDLERS (dopo le rotte)
 app.use(errorsHandler);
+app.use(notFound);
 
 //* START LISTENING
 app.listen(port, () => {
