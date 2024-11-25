@@ -30,6 +30,8 @@ function index(req, res) {
 //# SHOW
 
 function show(req, res) {
+  pluto.getData();
+
   //* logica per recupero id
   const id = parseInt(req.params.id);
   const post = postsData.find((post) => post.id === id);
