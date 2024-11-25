@@ -6,8 +6,6 @@ const app = express();
 const port = 3000;
 
 //* REGISTERING MIDDLEWARES
-
-// LOG TIME MIDDLEWARE
 const checkTime = require("./middlewares/checkTime");
 const errorsHandler = require("./middlewares/errorsHandler");
 const notFound = require("./middlewares/notFound");
@@ -25,7 +23,7 @@ const postsRouter = require("./routers/posts");
 // setting routers
 app.use("/posts", postsRouter);
 
-//* ERROR HANDLERS (dopo le rotte)
+//* ERROR HANDLERS (dopo le routers)
 app.use(errorsHandler);
 app.use(notFound);
 
