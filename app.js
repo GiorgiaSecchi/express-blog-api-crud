@@ -5,22 +5,30 @@ const express = require("express");
 const app = express();
 const port = 3000;
 
-//* BODY-PARSER FOR BODY REQUEST (JSON)
-app.use(express.json());
+//* REGISTERING MIDDLEWARES
 
-//* SERVING PUBLIC FOLDER
-app.use(express.static("public"));
-
-//* LOG TIME MIDDLEWARE
+// LOG TIME MIDDLEWARE
 const checkTime = require("./middlewares/checkTime");
+const errorsHandler = require("./middlewares/errorsHandler");
+
 // registrato per tutte le rotte dell'app (globale)
 app.use(checkTime);
 
-//* IMPORT ROUTERS
+// BODY-PARSER FOR BODY REQUEST (JSON)
+app.use(express.json());
+
+// SERVING PUBLIC FOLDER (assets statici)
+app.use(express.static("public"));
+
+//* REGISTERING ROUTERS
+// import routers
 const postsRouter = require("./routers/posts");
 
-//* SETTING ROUTERS
+// setting routers
 app.use("/posts", postsRouter);
+
+//* ERROR HANDLERS (gli errori si gestiscono alla fine)
+app.use(errorsHandler);
 
 //* START LISTENING
 app.listen(port, () => {
