@@ -2,6 +2,7 @@
 
 //* INIT EXPRESS
 const express = require("express");
+const cors = require("cors");
 const app = express();
 const port = 3000;
 
@@ -16,6 +17,8 @@ app.use(checkTime);
 app.use(express.json());
 // SERVING PUBLIC FOLDER (assets statici)
 app.use(express.static("public"));
+// Abilita CORS per il front-end
+app.use(cors());
 
 //* REGISTERING ROUTERS
 // import routers

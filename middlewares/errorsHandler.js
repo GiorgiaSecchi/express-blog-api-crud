@@ -1,8 +1,8 @@
 function errorsHandler(err, req, res, next) {
   res.status(err.status ?? 500);
   res.json({
-    status: err.status || 500,
-    error: err.message,
+    error: err.status || 500,
+    message: err.message,
   });
 }
 module.exports = errorsHandler;
