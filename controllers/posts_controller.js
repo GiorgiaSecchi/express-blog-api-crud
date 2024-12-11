@@ -11,21 +11,31 @@ function index(req, res) {
   // console.log("TAG: " + tag);
 
   if (tag) {
-    const post = postsData.filter((post) => {
-      return post.tags.includes(tag.toLowerCase());
-    });
-    res.json(post);
-    console.log(post);
+    const filteredPosts = postsData.filter((post) =>
+      post.tags.includes(tag.toLowerCase())
+    );
+    res.json(filteredPosts);
   } else {
-    res.json({
-      count: postsData.length,
-      posts: postsData,
-    });
+    res.json(postsData);
   }
-
-  // res.json("Visualizza la lista di tutti i posts");
-  // res.json(postsData);
 }
+
+// // if (tag) {
+// //   const post = postsData.filter((post) => {
+// //     return post.tags.includes(tag.toLowerCase());
+// //   });
+// //   res.json(post);
+// //   console.log(post);
+// // } else {
+// //   res.json({
+// //     count: postsData.length,
+// //     posts: postsData,
+// //   });
+// // }
+
+// // res.json("Visualizza la lista di tutti i posts");
+// // res.json(postsData);
+//// }
 
 //# SHOW
 
